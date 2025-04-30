@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Kaushan+Script&display=swap" rel="stylesheet">
+    <title>Projects</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo"><span class="name-color">Steph </span> Socito</div>
+        <nav>
+            <a href="index.html#home">Home</a>
+            <a href="about.html">About Me</a> 
+            <a href="quiz.html">Quiz</a>
+            <a href="project.html">Projects</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="hamburger" onclick="toggleNav()">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+
+<!-- Projects-->
+ <div class="projects"> 
+     <h3>My <span class="name-color"> Projects</span></h3>
+    <div class="activity-container">
+        <div class="activity-title">Login and Register Lab Activity</div>
+             
+        <div class="main-screenshot-container">
+            <div class="main-screenshot-box">
+                <img src="project/screenshots/login.png" alt="Full screenshot of Activity 1" class="main-screenshot">
+                <div class="screenshot-caption"> Login page we created in laboratory. <a href="project/website-login-register/studentlogin.html" class="file-link"> Login Activity</a></div>
+            </div>
+        </div>
+            
+
+            <div class="main-screenshot-container">
+                <div class="main-screenshot-box">
+                    <img src="project/screenshots/register.png" alt="Full screenshot of Activity 2" class="main-screenshot">
+                <div class="screenshot-caption">Register page we created to regsiter data so that we can log in<a href="project/website-login-register/registration-form.html" class="file-link"> Register Activity</a></div>
+            </div>
+        </div>
+    </div>
+
+ <!-- Website -->
+    <div class="activity-container">
+        <div class="activity-title">Website Lab Activity</div>
+            <div class="main-screenshot-container">
+                <div class="main-screenshot-box">
+                    <img src="project/screenshots/website-activity(home).png" alt="Full screenshot of Activity 3" class="main-screenshot">
+                <div class="screenshot-caption">A homepage of a website me and my partner (Dhale Cabardo) created.<a href="project/website-login-register/index.html" class="file-link"> Website Home Activity</a> </div>
+            </div>
+        </div>
+           
+            <div class="main-screenshot-container">
+                <div class="main-screenshot-box">
+                    <img src="project/screenshots/website-activity(about).png" alt="Full screenshot of Activity 4" class="main-screenshot">
+                <div class="screenshot-caption">About page of a website me and my partner (Dhale Cabardo) created.<a href="project/website-login-register/about.html" class="file-link"> Website Home Activity</a> </div>
+            </div>
+        </div>
+
+            <div class="main-screenshot-container">
+                <div class="main-screenshot-box">
+                    <img src="project/screenshots/website-activity(service).png" alt="Full screenshot of Activity 5" class="main-screenshot">
+                <div class="screenshot-caption">A service page of a website me and my partner (Dhale Cabardo) created.<a href="project/website-login-register/services.html" class="file-link"> Website Home Activity</a> </div>
+            </div>
+        </div>
+
+            <div class="main-screenshot-container">
+                <div class="main-screenshot-box">
+                    <img src="project/screenshots/website-activity(contact).png" alt="Full screenshot of Activity 6" class="main-screenshot">
+                <div class="screenshot-caption">A contact of a website me and my partner (Dhale Cabardo) created.<a href="project/website-login-register/contact.html" class="file-link"> Website Home Activity</a> </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- To do list-->
+    <div class="activity-container">
+        <div class="activity-title">To do list Lab Activity</div>
+             
+        <div class="main-screenshot-container">
+            <div class="main-screenshot-box">
+                <img src="project/screenshots/to-do-list-activity.png" alt="Full screenshot of Activity" class="main-screenshot">
+                <div class="screenshot-caption">Individual activty where we need tp create a to do list.<a href="project/to do list/index.html" class="file-link"> To do list Activity</a> </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+     <!-- Footer -->
+     <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-envelope"></i> socitostephano@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +639541844436</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Social Media</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/teptep.socito"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/tsubukiii/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://github.com/Steph1616"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/stephano-socito-a0b104363/"> <i class="fab fa-linkedin"> </i></a>      
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="quiz.html">Quizzes</a></li>
+                        <li><a href="project.html">Projects</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Stephano Socito. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        function toggleNav() {
+            const nav = document.querySelector('.navbar nav');
+            nav.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        *{
+            scroll-behavior: smooth;
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f5f7fa;
+            color:black;
+            line-height: 1.6;
+        }
+        
+        h1 {
+            color:black;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        h2 {
+            color: black;
+            margin-top: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .nav-container {
+            width: 1500px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-left: -350px;
+            margin-bottom: 2rem;
+           
+        }
+        
+        .nav-tabs {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background: linear-gradient(to right, #4361ee, #3f37c9);
+        }
+        
+        .nav-tabs li {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .nav-tabs a {
+            display: block;
+            padding: 1rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tabs a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .instructions {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .task-input {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .task-input label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #4361ee;
+        }
+        
+        .task-input input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .task-input input:focus {
+            outline: none;
+            border-color: #4361ee;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+        
+        .add-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background-color: #4361ee;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition:all 0.3s ease;
+        }
+        
+        .add-btn:hover {
+            background-color: #3f37c9;
+            transform: translateY(-2px);
+        }
+        
+        .task-list-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .task-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .task-list li {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .task-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .task-list li:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .task-list li input[type="checkbox"] {
+            appearance: none;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid #6c757d;
+            border-radius: 4px;
+            margin-right: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .task-list li input[type="checkbox"]:checked {
+            background-color: #4cc9f0;
+            border-color: #4cc9f0;
+        }
+        
+        .task-list li input[type="checkbox"]:checked::after {
+            content: "✓";
+            position: absolute;
+            color: white;
+            font-size: 0.9rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .task-list li .task-text {
+            flex-grow: 1;
+            font-size: 1.1rem;
+        }
+        
+        .task-list li.completed .task-text {
+            text-decoration: line-through;
+            color: var(--gray);
+        }
+        
+        .delete-btn {
+            background-color: transparent;
+            color: #f72585;
+            border: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition:all 0.3s ease;
+        }
+        
+        .delete-btn:hover {
+            background-color: rgba(247, 37, 133, 0.1);
+        }
+        
+        #status-message {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            background-color: #e2f3ff;
+            color: #4361ee;
+            font-size: 0.9rem;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div id="Home"> 
+        <h1>Accessible To-Do List</h1>
+    </div>
+
+
+    <div class="nav-container">
+        <ul class="nav-tabs">
+            <li><a href="#Home">Home</a></li>
+            <li><a href="#instructions">Instructions</a></li>
+            <li><a href="#my_task">My Tasks</a></li>
+        </ul>
+
+        <div class="instructions" id="instructions">
+            <strong>Instructions</strong><br>
+            Use the form below to add tasks. Use the keyboard (Tab, Enter) to navigate and interact.
+        </div>
+    </div>
+
+    <h2>My Tasks</h2>
+    
+    <div class="task-input">
+        <label for="new-task">New Task:</label>
+        <input type="text" id="new-task" name="new-task" aria-label="Enter new task" placeholder="What needs to be done?">
+        <button class="add-btn" id="add-task">Add Task</button>
+    </div>
+
+    <div class="task-list-container"  id="my_task">
+        <ul class="task-list" id="task-list">
+        
+        </ul>
+    </div>
+
+    <div id="status-message" aria-live="polite" role="status">Task "qwerty" added.</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const taskInput = document.getElementById('new-task');
+            const addButton = document.getElementById('add-task');
+            const taskList = document.getElementById('task-list');
+            const statusMessage = document.getElementById('status-message');
+
+            // Function to add a new task
+            function addTask() {
+                const taskText = taskInput.value.trim();
+                
+                if (taskText) {
+                    const newItem = document.createElement('li');
+                    newItem.innerHTML = `
+                        <input type="checkbox" aria-label="Mark task as completed">
+                        <span class="task-text">${taskText}</span>
+                    `;
+                    
+            
+                    const checkbox = newItem.querySelector('input[type="checkbox"]');
+                   
+                    
+                    checkbox.addEventListener('change', function() {
+                        if (this.checked) {
+                            newItem.classList.add('completed');
+                            statusMessage.textContent = `Task "${taskText}" marked as completed.`;
+                        } else {
+                            newItem.classList.remove('completed');
+                            statusMessage.textContent = `Task "${taskText}" marked as not completed.`;
+                        }
+                    });
+                    
+               
+                    taskList.appendChild(newItem);
+                    statusMessage.textContent = `Task "${taskText}" added.`;
+                    taskInput.value = '';
+                    taskInput.focus();
+                }
+            }
+
+            // Add task when button is clicked
+            addButton.addEventListener('click', addTask);
+
+            // Add task when Enter key is pressed
+            taskInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addTask();
+                }
+            });
+
+    
+            document.querySelectorAll('#task-list li').forEach(item => {
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                const deleteBtn = item.querySelector('.delete-btn');
+                const taskText = item.querySelector('.task-text').textContent;
+
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        item.classList.add('completed');
+                        statusMessage.textContent = `Task "${taskText}" marked as completed.`;
+                    } else {
+                        item.classList.remove('completed');
+                        statusMessage.textContent = `Task "${taskText}" marked as not completed.`;
+                    }
+                });
+                
+                deleteBtn.addEventListener('click', function() {
+                    statusMessage.textContent = `Task "${taskText}" deleted.`;
+                    item.remove();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
